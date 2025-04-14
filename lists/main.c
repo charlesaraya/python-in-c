@@ -3,15 +3,15 @@
 #include "list.h"
 
 int main() {
-    array_t array;
-    init_array(&array, TYPE_INT, 10);
+    list_t list;
+    init_list(&list, TYPE_INT, 10);
 
     for (int i = 0; i < 10; i++) {
-        append(&array, &i);
+        append(&list, &i);
     }
-    for (int i = 0; i < array.length; i++) {
-        printf("Element %d: %d\n", i, ((int *)array.data)[i]);
+    for (int i = 0; i < list.length; i++) {
+        printf("Element %d: %d\n", i, ((int *)list.data)[i]);
     }
-    free(array.data);
+    free(list.data);
     return 0;
 }

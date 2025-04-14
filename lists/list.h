@@ -1,17 +1,17 @@
-typedef enum ArrayType {
+typedef enum ListType {
     TYPE_INT,
     TYPE_FLOAT,
     TYPE_GENERIC,
-} array_type_t;
+} list_type_t;
 
-typedef struct Array {
+typedef struct List {
     int length;
     int capacity;
-    array_type_t type;
+    list_type_t type;
     int type_size;
     void *data;
-} array_t;
+} list_t;
 
-void init_array(array_t *array, array_type_t type, int capacity);
+void init_list(list_t *list, list_type_t type, int capacity);
 
-void append(array_t *from_array, void *element);
+void append(list_t *from_list, void *element);

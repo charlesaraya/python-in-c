@@ -2,8 +2,8 @@
 #include <string.h>
 #include "list.h"
 
-void init_array(array_t *array, array_type_t type, int capacity) {
-    if (NULL == array) {
+void init_list(list_t *list, list_type_t type, int capacity) {
+    if (NULL == list) {
         return;
     }
     if (capacity <= 0) {
@@ -11,41 +11,41 @@ void init_array(array_t *array, array_type_t type, int capacity) {
     }
     switch (type) {
         case TYPE_INT:
-            array->type_size = sizeof(int);
+            list->type_size = sizeof(int);
             break;
         case TYPE_FLOAT:
-            array->type_size = sizeof(float);
+            list->type_size = sizeof(float);
             break;
         case TYPE_GENERIC:
-            array->type_size = sizeof(void);
+            list->type_size = sizeof(void);
             break;
         default:
             return;
     }
 
-    void *data = (void *)malloc(capacity * array->type_size);
+    void *data = (void *)malloc(capacity * list->type_size);
     if (NULL == data) {
         return;
     }
-    array->data = data;
-    array->capacity = capacity;
-    array->length = 0;
-    array->type = type;
+    list->data = data;
+    list->capacity = capacity;
+    list->length = 0;
+    list->type = type;
     return;
 }
 
-void append(array_t *array, void *element) {
-    if (NULL == array || NULL == element) {
+void append(list_t *list, void *element) {
+    if (NULL == list || NULL == element) {
         return;
     }
-    if (array->length == array->capacity) {
-        array->capacity *= 2;
-        array->data = realloc(array->data, array->capacity * array->type_size);
-        if (NULL == array->data) {
+    if (list->length == list->capacity) {
+        list->capacity *= 2;
+        list->data = realloc(list->data, list->capacity * list->type_size);
+        if (NULL == list->data) {
             return;
         }
     }
-    void *target = array->data + (array->length * array->type_size);
-    memcpy(target, element, array->type_size);
-    array->length++;
+    void *target = list->data + (list->length * list->type_size);
+    memcpy(target, element, list->type_size);
+    list->length++;
 }
