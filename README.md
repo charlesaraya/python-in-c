@@ -8,9 +8,10 @@ A C implementation of Python’s core data structures — built from scratch to 
 
 - **Initialization** with capacity ✅
 - **Append**: add an element to the end of the list ✅
-- **Insert**: set an element in the list by index
-- **Access**: get an element from the list by index/value
-- **Delete**: remove an element from the list by index/value
+- **Print**: print the list ✅
+- **Insert**: set an element in the list by index (from head and tail) ✅
+- **Access**: get an element from the list by index (from head and tail) ✅ / value
+- **Delete**: remove an element from the list by index / value
 - **Search**: searching for an element in the list
 
 ### Stack (LIFO)
