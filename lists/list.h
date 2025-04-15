@@ -14,4 +14,6 @@ typedef struct List {
 
 void init_list(list_t *list, list_type_t type, int capacity);
 
-void append(list_t *from_list, void *element);
+void append(list_t *list, void *element);
+
+void print(list_t *list);

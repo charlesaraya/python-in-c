@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 #include "list.h"
 
 void init_list(list_t *list, list_type_t type, int capacity) {
@@ -48,4 +49,18 @@ void append(list_t *list, void *element) {
     void *target = list->data + (list->length * list->type_size);
     memcpy(target, element, list->type_size);
     list->length++;
+}
+
+void print(list_t *list) {
+    if (NULL == list) {
+        return;
+    }
+    printf("[");
+    int i = 0;
+    while (i < list->length - 1) {
+        printf("%d, ", ((int *)list->data)[i]);
+        i++;
+    } 
+    printf("%d", ((int *)list->data)[list->length - 1]);
+    printf("]\n");
 }

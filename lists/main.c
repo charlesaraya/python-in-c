@@ -9,9 +9,8 @@ int main() {
     for (int i = 0; i < 10; i++) {
         append(&list, &i);
     }
-    for (int i = 0; i < list.length; i++) {
-        printf("Element %d: %d\n", i, ((int *)list.data)[i]);
-    }
+    print(&list);
+
     free(list.data);
     return 0;
 }
