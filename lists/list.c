@@ -69,9 +69,29 @@ void insert(list_t *list, void *element, int index) {
     if (NULL == list) {
         return;
     }
-    if (index >= list->length) {
+    void *target = NULL;
+    if (index >= list->length || index <= -list->length-1) {
         return;
+    } else if (index >= 0) {
+        target = list->data + (index * list->type_size);
+    } else {
+        target = list->data + ((list->length + index) * list->type_size);
     }
-    void *target = list->data + (index * list->type_size);
     memcpy(target, element, list->type_size);
+}
+
+void *access(list_t *list, int index) {
+    if (NULL == list) {
+        return NULL;
+    }
+    // Index out of upper and lower bounds
+    if (index >= list->length || index <= -list->length-1) {
+        return NULL;
+    } else if (index >= 0) {
+        void *target = list->data + (index * list->type_size);
+        return target;
+    } else {
+        void *target = list->data + ((list->length + index) * list->type_size);
+        return target;
+    }
 }
