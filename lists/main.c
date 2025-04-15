@@ -11,6 +11,10 @@ int main() {
     }
     print(&list);
 
+    int big_num= 100;
+    insert(&list, &big_num, 5);
+    print(&list);
+
     free(list.data);
     return 0;
 }

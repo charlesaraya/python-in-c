@@ -64,3 +64,14 @@ void print(list_t *list) {
     printf("%d", ((int *)list->data)[list->length - 1]);
     printf("]\n");
 }
+
+void insert(list_t *list, void *element, int index) {
+    if (NULL == list) {
+        return;
+    }
+    if (index >= list->length) {
+        return;
+    }
+    void *target = list->data + (index * list->type_size);
+    memcpy(target, element, list->type_size);
+}

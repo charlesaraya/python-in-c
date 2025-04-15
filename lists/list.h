@@ -17,3 +17,5 @@ void init_list(list_t *list, list_type_t type, int capacity);
 void append(list_t *list, void *element);
 
 void print(list_t *list);
+
+void insert(list_t *list, void *element, int index);
