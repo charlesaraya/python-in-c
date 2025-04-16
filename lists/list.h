@@ -37,3 +37,5 @@ void print(list_t *list);
 void insert(list_t *list, void *element, int index);
 
 void *access(list_t *list, int index);
+
+int in(list_t *list, void *element);

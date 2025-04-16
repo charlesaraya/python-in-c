@@ -103,3 +103,20 @@ void *access(list_t *list, int index) {
         return target;
     }
 }
+
+int in(list_t *list, void *element) {
+    if (NULL == list || NULL == element) {
+        return -1;
+    }
+    for (int i = 0; i < list->length; i++) {
+        switch (list->type) {
+            case TYPE_INT:
+                if ((((int *)list->data)[i]) == *((int *)element)) { return 1; }
+            case TYPE_FLOAT:
+                if ((((float *)list->data)[i]) == *((float *)element)) { return 1; }
+            default:
+                break;
+        }
+    }
+    return 0;
+}

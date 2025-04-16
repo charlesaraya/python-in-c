@@ -27,6 +27,13 @@ int main() {
     num = (int *)access(&list, -1);
     printf("%d\n", *num);
 
+    int is_found = in(&list, &big_num);
+    printf("%d\n", is_found);
+
+    float pi = 3.14;
+    is_found = in(&list, &pi);
+    printf("%d\n", is_found);
+
     free(list.data);
     return 0;
 }

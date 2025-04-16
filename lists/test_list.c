@@ -32,6 +32,22 @@ int main() {
     assert(list.length == INITIAL_CAPACITY + 1);
     assert(list.data != NULL);
 
+    /** 
+     * @name: in
+    */
+    printf("Test in...\n");
+    int in_list = 9;
+    int not_in_list = 100;
+    assert(in(&list, &in_list) == 1);
+    assert(in(&list, &not_in_list) == 0);
+
+    list_t float_list;
+    init_list(&float_list, TYPE_FLOAT, INITIAL_CAPACITY);
+    float pi = 3.14;
+    float e = 2.71;
+    append(&float_list, &pi);
+    assert(in(&float_list, &pi) == 1);
+    assert(in(&float_list, &e) == 0);
 
     free(list.data);
 
