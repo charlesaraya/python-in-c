@@ -35,6 +35,13 @@ void init_list(list_t *list, list_type_t type, int capacity) {
     return;
 }
 
+int len(list_t *list) {
+    if (NULL == list) {
+        return -1;
+    }
+    return list->length;
+}
+
 void append(list_t *list, void *element) {
     if (NULL == list || NULL == element) {
         return;

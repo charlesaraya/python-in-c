@@ -4,6 +4,9 @@
 #include "list.h"
 
 int main() {
+    /** 
+     * @name: init_list
+    */
     list_t list;
     const int INITIAL_CAPACITY = 10;
     printf("Test init list...\n");
@@ -13,6 +16,14 @@ int main() {
     assert(list.type_size == sizeof(int));
     assert(list.data != NULL);
 
+    /** 
+     * @name: len
+    */
+    assert(list.length == len(&list));
+
+    /** 
+     * @name: append
+    */
     printf("Test append...\n");
     for (int i = 0; i < INITIAL_CAPACITY + 1; i++) {
         append(&list, &i);
@@ -20,6 +31,7 @@ int main() {
     assert(list.capacity == INITIAL_CAPACITY * 2);
     assert(list.length == INITIAL_CAPACITY + 1);
     assert(list.data != NULL);
+
 
     free(list.data);
 

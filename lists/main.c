@@ -10,6 +10,7 @@ int main() {
         append(&list, &i);
     }
     print(&list);
+    printf("Length: %d\n", len(&list));
 
     // Insert
     int big_num= 100;
