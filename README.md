@@ -6,13 +6,17 @@ A C implementation of Python’s core data structures — built from scratch to 
 
 ### 1. Dynamic Array / List
 
-- **Initialization** with capacity ✅
-- **Append**: add an element to the end of the list ✅
-- **Print**: print the list ✅
-- **Insert**: set an element in the list by index (from head and tail) ✅
-- **Access**: get an element from the list by index (from head and tail) ✅ / value
-- **Delete**: remove an element from the list by index / value
-- **Search**: searching for an element in the list
+- **Initialization** with capacity. ✅
+- **Length**: get the length of the list. ✅
+- **Append**: add an element to the end of the list. ✅
+- **Print**: print the list. ✅
+- **Insert**: set an element in the list by index (from head and tail). ✅
+- **Access**: get an element from the list by index (from head and tail). ✅
+- **Membership**: check an element's membership in the list. ✅
+- **min**: gets the smallest element in the list. ✅
+- **max**: gets the biggest element in the list.
+- **Delete**: remove an element from the list by index.
+- **Search**: searching for an element in the list.
 
 ### Stack (LIFO)
 
