@@ -39,6 +39,7 @@ void append(list_t *list, void *element) {
     if (NULL == list || NULL == element) {
         return;
     }
+    // Double the capacity when full
     if (list->length == list->capacity) {
         list->capacity *= 2;
         list->data = realloc(list->data, list->capacity * list->type_size);
