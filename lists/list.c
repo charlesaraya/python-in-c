@@ -120,3 +120,27 @@ int in(list_t *list, void *element) {
     }
     return 0;
 }
+
+void *min(list_t *list) {
+    if (NULL == list || list->length == 0) {
+        return NULL;
+    }
+    void *current_min = list->data;
+    for (int i = 1; i < list->length; i++) {
+        switch (list->type) {
+            case TYPE_INT:
+                if (((int *)list->data)[i] <= *((int *)current_min)) {
+                    current_min = (char *)list->data + list->type_size * i;
+                }
+                break;
+            case TYPE_FLOAT:
+                if (((float *)list->data)[i] <= *((float *)current_min)) {
+                    current_min = (char *)list->data + list->type_size * i;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    return current_min;
+}

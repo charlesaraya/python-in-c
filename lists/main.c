@@ -27,12 +27,19 @@ int main() {
     num = (int *)access(&list, -1);
     printf("%d\n", *num);
 
+    // In
     int is_found = in(&list, &big_num);
-    printf("%d\n", is_found);
+    if (is_found == 1) { printf("%d Found\n", big_num); } else if (is_found == 0) { printf("%d Not Found\n", big_num); } 
 
     float pi = 3.14;
     is_found = in(&list, &pi);
-    printf("%d\n", is_found);
+    if (is_found == 1) { printf("%f Found\n", pi); } else if (is_found == 0) { printf("%f Not Found\n", pi); } 
+
+    // Min
+    int negative = -100;
+    append(&list, &negative);
+    void *lowest = min(&list);
+    printf("Min: %d\n\n", *(int *)lowest);
 
     free(list.data);
     return 0;

@@ -48,6 +48,19 @@ int main() {
     append(&float_list, &pi);
     assert(in(&float_list, &pi) == 1);
     assert(in(&float_list, &e) == 0);
+    free(float_list.data);
+
+    /** 
+     * @name: min
+    */
+    int small_num = -100;
+    insert(&list, &small_num, 5);
+    assert(small_num == *((int *)min(&list)));
+
+    list_t empty_list;
+    init_list(&empty_list, TYPE_FLOAT, 10);
+    assert(min(&empty_list) == NULL);
+    free(empty_list.data);
 
     free(list.data);
 
