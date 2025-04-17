@@ -68,6 +68,22 @@ int main() {
     printf("Remove(%d): %d\n", remove_this_num, result);
     print(&list);
 
+    // Count
+    printf("\n===Count===\n");
+    print(&list);
+    int num_in_list = 4;
+    insert(&list, &num_in_list, 0);
+    printf("Inserted %d @ %d\n", num_in_list, 0);
+    insert(&list, &num_in_list, -1);
+    printf("Inserted: %d @ %d\n", num_in_list, -1);
+    print(&list);
+    int counts = count(&list, &num_in_list);
+    printf("Count(%d): %d\n", num_in_list, counts);
+
+    int num_not_in_list = -11;
+    counts = count(&list, &num_not_in_list);
+    printf("Count(%d): %d\n", num_not_in_list, counts);
+
     free(list.data);
     return 0;
 }

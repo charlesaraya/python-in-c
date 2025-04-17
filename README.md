@@ -17,12 +17,12 @@ A C implementation of Python’s core data structures — built from scratch to 
 - **Maximum**: gets the biggest element in the list. ✅
 - **Pop**: remove an element from the list by index. ✅
 - **Remove**: remove an element from the list by value. ✅
-- **Search**: searching for an element in the list.
-- **Count**: returns the number of times an element appears in the list.
+- **Count**: returns the number of times an element appears in the list. ✅
 - **Sort**: sorts the elements of the list in place.
 - **Reverse**: reverses the elements of the list in place.
 - **Copy**: returns a shallow copy of the list.
 - **Extend**: extends the list by appending all the elements from another list.
+- **Search**: searching for an element in the list.
 
 ### Stack (LIFO)
 

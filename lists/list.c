@@ -235,3 +235,30 @@ int delete(list_t *list, void *element) {
     memset(last_list_element, 0, list->type_size);
     return 0;
 }
+
+int count(list_t *list, void *element) {
+    void *list_element = NULL;
+    int count = 0;
+
+    if (NULL == list || NULL == element) {
+        return -1;
+    }
+    for (int i = 0; i < list->length; i++) {
+        list_element = (char *)list->data + list->type_size * i;
+        switch (list->type) {
+            case TYPE_INT:
+                if (*(int *)list_element == *(int *)element) {
+                    count++;
+                }
+                break;
+            case TYPE_FLOAT:
+                if (*(float *)list_element == *(float *)element) {
+                    count++;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    return count;
+}

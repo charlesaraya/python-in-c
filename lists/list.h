@@ -47,3 +47,5 @@ void *max(list_t *list);
 void *pop(list_t *list, int index);
 
 int delete(list_t *list, void *element);
+
+int count(list_t *list, void *element);
