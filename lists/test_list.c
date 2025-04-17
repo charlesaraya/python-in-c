@@ -62,6 +62,18 @@ int main() {
     assert(min(&empty_list) == NULL);
     free(empty_list.data);
 
+    /** 
+     * @name: max
+    */
+    int large_num = 500;
+    int larger_num = 1000;
+    insert(&list, &large_num, 2);
+    assert(large_num == *((int *)max(&list)));
+    insert(&list, &larger_num, 7);
+    int found_max = *((int *)max(&list));
+    assert(large_num != found_max);
+    assert(larger_num == found_max);
+
     free(list.data);
 
     printf("All tests passed.\n");

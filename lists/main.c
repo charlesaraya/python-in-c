@@ -39,7 +39,13 @@ int main() {
     int negative = -100;
     append(&list, &negative);
     void *lowest = min(&list);
-    printf("Min: %d\n\n", *(int *)lowest);
+    printf("Min: %d\n", *(int *)lowest);
+
+    // Max
+    int very_big_num = 1000;
+    insert(&list, &very_big_num, 3);
+    int largest = *((int *)max(&list));
+    printf("Max: %d\n", largest);
 
     free(list.data);
     return 0;

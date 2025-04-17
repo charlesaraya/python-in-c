@@ -41,3 +41,5 @@ void *access(list_t *list, int index);
 int in(list_t *list, void *element);
 
 void *min(list_t *list);
+
+void *max(list_t *list);
