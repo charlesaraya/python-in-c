@@ -13,9 +13,9 @@ A C implementation of Python’s core data structures — built from scratch to 
 - **Insert**: set an element in the list by index (from head and tail). ✅
 - **Access**: get an element from the list by index (from head and tail). ✅
 - **Membership**: check an element's membership in the list. ✅
-- **min**: gets the smallest element in the list. ✅
-- **max**: gets the biggest element in the list.
-- **Delete**: remove an element from the list by index.
+- **Minimum**: gets the smallest element in the list. ✅
+- **Maximum**: gets the biggest element in the list. ✅
+- **Pop**: remove an element from the list by index. ✅
 - **Search**: searching for an element in the list.
 
 ### Stack (LIFO)
