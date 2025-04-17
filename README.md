@@ -16,7 +16,6 @@ A C implementation of Python’s core data structures — built from scratch to 
 - **Minimum**: gets the smallest element in the list. ✅
 - **Maximum**: gets the biggest element in the list. ✅
 - **Pop**: remove an element from the list by index. ✅
-- **Pop**: remove an element from the list by index  (from tail index).
 - **Remove**: remove an element from the list by value. ✅
 - **Search**: searching for an element in the list.
 - **Count**: returns the number of times an element appears in the list.
