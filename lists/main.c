@@ -58,16 +58,14 @@ int main() {
     free(popped);
 
     // Remove
-    int remove_this_num = -100;
-    printf("Pre-Remove\n");
+    printf("\n===Remove===\n");
     print(&list);
+    int remove_this_num = -100;
     int result = delete(&list, &remove_this_num);
-    if (0 == result) {
-        printf("Element %d found\n", remove_this_num);
-    } else if (1 == result) {
-        printf("Element %d not found\n", remove_this_num);
-    }
-    printf("Post-Remove\n");
+    printf("Remove(%d): %d\n", remove_this_num, result);
+    remove_this_num = -999;
+    result = delete(&list, &remove_this_num);
+    printf("Remove(%d): %d\n", remove_this_num, result);
     print(&list);
 
     free(list.data);
