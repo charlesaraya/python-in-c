@@ -45,3 +45,5 @@ void *min(list_t *list);
 void *max(list_t *list);
 
 void *pop(list_t *list, int index);
+
+int delete(list_t *list, void *element);

@@ -53,6 +53,19 @@ int main() {
     printf("Post-Pop\nPopped: %d, List Length:%d\n", *(int *)popped, list.length);
     free(popped);
 
+    // Remove
+    int remove_this_num = -100;
+    printf("Pre-Remove\n");
+    print(&list);
+    int result = delete(&list, &remove_this_num);
+    if (0 == result) {
+        printf("Element %d found\n", remove_this_num);
+    } else if (1 == result) {
+        printf("Element %d not found\n", remove_this_num);
+    }
+    printf("Post-Remove\n");
+    print(&list);
+
     free(list.data);
     return 0;
 }

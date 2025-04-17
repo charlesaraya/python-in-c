@@ -191,3 +191,44 @@ void *pop(list_t *list, int index) {
 
     return popped_element;
 }
+
+int delete(list_t *list, void *element) {
+    void *list_element = NULL;
+    int index = -1;
+
+    if (NULL == list || NULL == element) {
+        return -1;
+    }
+    for (int i = 0; i < list->length; i++) {
+        list_element = (char *)list->data + list->type_size * i;
+        switch (list->type) {
+            case TYPE_INT:
+                if (*(int *)list_element == *(int *)element) {
+                    index = i;
+                }
+                break;
+            case TYPE_FLOAT:
+                if (*(float *)list_element == *(float *)element) {
+                    index = i;
+                }
+                break;
+            default:
+                break;
+        }
+        if (-1 != index) {
+            break;
+        }
+    }
+    if (-1 == index) {
+        return 1;
+    }
+    // Shrink list
+    void *dest = (char *)list->data + list->type_size * index;
+    size_t shift_length = list->length - index - 1;
+    memmove(dest, (char *)dest + list->type_size, shift_length * list->type_size);
+    // Set last element to 0
+    list->length--;
+    void *last_list_element = (char *)list->data + list->length * list->type_size;
+    memset(last_list_element, 0, list->type_size);
+    return 0;
+}
