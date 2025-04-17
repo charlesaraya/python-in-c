@@ -168,3 +168,26 @@ void *max(list_t *list) {
     }
     return current_max;
 }
+
+void *pop(list_t *list, int index) {
+    if (NULL == list || index < 0 || index >= list->length) {
+        return NULL;
+    }
+    void *dest = (char *)list->data + list->type_size * index;
+    // Store popped element
+    void *popped_element = malloc(list->type_size);
+    if (NULL == popped_element) {
+        return NULL;
+    }
+    memcpy(popped_element, dest, list->type_size);
+
+    // Shrink list
+    size_t num_element = list->length - index - 1;
+    memmove(dest, (char *)dest + list->type_size, num_element * list->type_size);
+    // Set last element to 0
+    list->length--;
+    void *last_list_element = (char *)list->data + list->length * list->type_size;
+    memset(last_list_element, 0, list->type_size);
+
+    return popped_element;
+}

@@ -47,6 +47,12 @@ int main() {
     int largest = *((int *)max(&list));
     printf("Max: %d\n", largest);
 
+    // Pop
+    printf("Pre-Pop\nList Length: %d\n", list.length);
+    void *popped = pop(&list, 5);
+    printf("Post-Pop\nPopped: %d, List Length:%d\n", *(int *)popped, list.length);
+    free(popped);
+
     free(list.data);
     return 0;
 }
