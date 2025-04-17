@@ -129,12 +129,12 @@ void *min(list_t *list) {
     for (int i = 1; i < list->length; i++) {
         switch (list->type) {
             case TYPE_INT:
-                if (((int *)list->data)[i] <= *((int *)current_min)) {
+                if (((int *)list->data)[i] < *((int *)current_min)) {
                     current_min = (char *)list->data + list->type_size * i;
                 }
                 break;
             case TYPE_FLOAT:
-                if (((float *)list->data)[i] <= *((float *)current_min)) {
+                if (((float *)list->data)[i] < *((float *)current_min)) {
                     current_min = (char *)list->data + list->type_size * i;
                 }
                 break;
