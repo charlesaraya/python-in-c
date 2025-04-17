@@ -48,9 +48,13 @@ int main() {
     printf("Max: %d\n", largest);
 
     // Pop
-    printf("Pre-Pop\nList Length: %d\n", list.length);
+    printf("\n===Pop===\n");
+    print(&list);
     void *popped = pop(&list, 5);
-    printf("Post-Pop\nPopped: %d, List Length:%d\n", *(int *)popped, list.length);
+    printf("Pop(%d): %d\n", 5, *(int *)popped);
+    popped = pop(&list, -2);
+    printf("Pop(%d): %d\n", -2, *(int *)popped);
+    print(&list);
     free(popped);
 
     // Remove

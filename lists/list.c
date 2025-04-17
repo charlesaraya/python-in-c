@@ -170,8 +170,11 @@ void *max(list_t *list) {
 }
 
 void *pop(list_t *list, int index) {
-    if (NULL == list || index < 0 || index >= list->length) {
+    if (NULL == list || index < -list->length || index >= list->length) {
         return NULL;
+    }
+    if (index < 0) {
+        index = list->length + index;
     }
     void *dest = (char *)list->data + list->type_size * index;
     // Store popped element
