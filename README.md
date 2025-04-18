@@ -6,18 +6,18 @@ A C implementation of Python’s core data structures — built from scratch to 
 
 ### 1. Dynamic Array / List
 
-- **Initialization** with capacity. ✅
-- **Length**: get the length of the list. ✅
-- **Append**: add an element to the end of the list. ✅
-- **Print**: print the list. ✅
-- **Insert**: set an element in the list by index (from head and tail). ✅
-- **Access**: get an element from the list by index (from head and tail). ✅
-- **Membership**: check an element's membership in the list. ✅
-- **Minimum**: gets the smallest element in the list. ✅
-- **Maximum**: gets the biggest element in the list. ✅
-- **Pop**: remove an element from the list by index. ✅
-- **Remove**: remove an element from the list by value. ✅
-- **Count**: returns the number of times an element appears in the list. ✅
+- **Initialization** of int/float type with capacity. `list()` ✅
+- **Length**: get the length of the list. `len(list)` ✅
+- **Append**: add an element to the end of the list. `list.append(x)` ✅
+- **Print**: print the list. `print(list)` ✅
+- **Insert**: set an element in the list by index (from head and tail). `list.insert(i, x)` ✅
+- **Access**: get an element from the list by index (from head and tail). `list[i]` ✅
+- **Membership**: check an element's membership in the list. `x in list` ✅
+- **Minimum**: gets the smallest element in the list. `min(list)` ✅
+- **Maximum**: gets the biggest element in the list. `max(list)` ✅
+- **Pop**: remove an element from the list by index. `list.pop([i])` ✅
+- **Remove**: remove an element from the list by value. `list.remove(x)` ✅
+- **Count**: returns the number of times an element appears in the list. `list.count(x)` ✅
 - **Sort**: sorts the elements of the list in place.
 - **Reverse**: reverses the elements of the list in place.
 - **Copy**: returns a shallow copy of the list.
