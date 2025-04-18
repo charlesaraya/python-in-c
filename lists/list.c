@@ -202,6 +202,7 @@ int delete(list_t *list, void *element) {
     if (NULL == list || NULL == element) {
         return -1;
     }
+    // Find the index of the first element in the list matching argument
     for (int i = 0; i < list->length; i++) {
         list_element = (char *)list->data + list->type_size * i;
         switch (list->type) {
@@ -218,14 +219,16 @@ int delete(list_t *list, void *element) {
             default:
                 break;
         }
+        // break if an index is found
         if (-1 != index) {
             break;
         }
     }
+    // element not found in the list
     if (-1 == index) {
-        return 1;
+        return 0;
     }
-    // Shrink list
+    // element found, hence shrink the list at index
     void *dest = (char *)list->data + list->type_size * index;
     size_t shift_length = list->length - index - 1;
     memmove(dest, (char *)dest + list->type_size, shift_length * list->type_size);
@@ -233,7 +236,7 @@ int delete(list_t *list, void *element) {
     list->length--;
     void *last_list_element = (char *)list->data + list->length * list->type_size;
     memset(last_list_element, 0, list->type_size);
-    return 0;
+    return 1;
 }
 
 int count(list_t *list, void *element) {
