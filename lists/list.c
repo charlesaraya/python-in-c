@@ -63,6 +63,10 @@ void print(list_t *list) {
     if (NULL == list) {
         return;
     }
+    if (list->length == 0){
+        printf("[]\n");
+        return;
+    }
     printf("[");
     int i = 0;
     while (i < list->length - 1) {
