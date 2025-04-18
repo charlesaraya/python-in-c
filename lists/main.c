@@ -5,12 +5,14 @@
 int main() {
     list_t list;
     init_list(&list, TYPE_INT, 10);
+    print(&list);
+    printf("len(list): %d\n", len(&list));
 
     for (int i = 0; i < 10; i++) {
         append(&list, &i);
     }
     print(&list);
-    printf("Length: %d\n", len(&list));
+    printf("len(list): %d\n", len(&list));
 
     // Insert
     int big_num= 100;
@@ -21,51 +23,51 @@ int main() {
     print(&list);
 
     // Access
+    printf("\n===Access===\n");
     int *num = (int *)access(&list, 5);
-    printf("%d\n", *num);
+    printf("list[%d]: %d\n", 5, *num);
 
     num = (int *)access(&list, -1);
-    printf("%d\n", *num);
+    printf("list[%d]: %d\n", -1, *num);
 
     // In
-    int is_found = in(&list, &big_num);
-    if (is_found == 1) { printf("%d Found\n", big_num); } else if (is_found == 0) { printf("%d Not Found\n", big_num); } 
+    printf("\n===In===\n");
+    print(&list);
+    printf("%d in list: %d\n", big_num, in(&list, &big_num));
 
     float pi = 3.14;
-    is_found = in(&list, &pi);
-    if (is_found == 1) { printf("%f Found\n", pi); } else if (is_found == 0) { printf("%f Not Found\n", pi); } 
+    printf("%f in list: %d\n", pi, in(&list, &pi));
 
-    // Min
-    int negative = -100;
-    append(&list, &negative);
-    void *lowest = min(&list);
-    printf("Min: %d\n", *(int *)lowest);
-
-    // Max
-    int very_big_num = 1000;
-    insert(&list, &very_big_num, 3);
-    int largest = *((int *)max(&list));
-    printf("Max: %d\n", largest);
+    // Min & Max
+    printf("\n===Min & Max===\n");
+    print(&list);
+    int lowest = *(int *)min(&list);
+    int largest = *(int *)max(&list);
+    printf("min(list): %d\n", lowest);
+    printf("max(list): %d\n", largest);
 
     // Pop
     printf("\n===Pop===\n");
     print(&list);
     void *popped = pop(&list, 5);
-    printf("Pop(%d): %d\n", 5, *(int *)popped);
-    popped = pop(&list, -2);
-    printf("Pop(%d): %d\n", -2, *(int *)popped);
+    printf("list.pop(%d): %d\n", 5, *(int *)popped);
+    popped = pop(&list, -1);
+    printf("list.pop(): %d\n", *(int *)popped);
     print(&list);
     free(popped);
 
     // Remove
     printf("\n===Remove===\n");
     print(&list);
-    int remove_this_num = -100;
-    int result = delete(&list, &remove_this_num);
-    printf("Remove(%d): %d\n", remove_this_num, result);
-    remove_this_num = -999;
-    result = delete(&list, &remove_this_num);
-    printf("Remove(%d): %d\n", remove_this_num, result);
+    int some_num = -100;
+    insert(&list, &some_num, 2);
+    printf("list.insert(%d, %d)\n", 2, some_num);
+    print(&list);
+    int result = delete(&list, &some_num);
+    printf("list.remove(%d): %d\n", some_num, result);
+    some_num = -999;
+    result = delete(&list, &some_num);
+    printf("list.remove(%d): %d\n", some_num, result);
     print(&list);
 
     // Count
@@ -73,16 +75,15 @@ int main() {
     print(&list);
     int num_in_list = 4;
     insert(&list, &num_in_list, 0);
-    printf("Inserted %d @ %d\n", num_in_list, 0);
+    printf("list.insert(%d, %d)\n", 0, num_in_list);
     insert(&list, &num_in_list, -1);
-    printf("Inserted: %d @ %d\n", num_in_list, -1);
+    printf("list.insert(%d, %d)\n", -1, num_in_list);
     print(&list);
-    int counts = count(&list, &num_in_list);
-    printf("Count(%d): %d\n", num_in_list, counts);
+    int counts = count(&list, &num_in_list);    printf("list.count(%d): %d\n", num_in_list, counts);
 
     int num_not_in_list = -11;
     counts = count(&list, &num_not_in_list);
-    printf("Count(%d): %d\n", num_not_in_list, counts);
+    printf("list.count(%d): %d\n", num_not_in_list, counts);
 
     free(list.data);
     return 0;
