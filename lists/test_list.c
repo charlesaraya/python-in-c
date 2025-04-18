@@ -74,6 +74,43 @@ int main() {
     assert(large_num != found_max);
     assert(larger_num == found_max);
 
+    /** 
+     * @name: pop
+    */
+    int length = list.length;
+    int last_item = *(int *)access(&list, -1);
+    void *popped = pop(&list, -1);
+    assert(*(int *)popped == last_item);
+    assert(list.length == length - 1);
+    free(popped);
+
+    int first_element = *(int *)access(&list, 0);
+    popped = pop(&list, 0);
+    assert(*(int *)popped == first_element);
+    assert(list.length == length - 2);
+    free(popped);
+
+    /** 
+     * @name: delete
+    */
+    length = list.length;
+    assert(delete(&list, &small_num) == 1);
+    assert(list.length == length - 1);
+
+    int some_num = -11;
+    assert(delete(&list, &some_num) == 0);
+    assert(list.length == length - 1);
+
+    /** 
+     * @name: count
+    */
+    int num = 3;
+    insert(&list, &num, 0);
+    append(&list, &num);
+    assert(count(&list, &num) == 3);
+    num = -1;
+    assert(count(&list, &num) == 0);
+
     free(list.data);
 
     printf("All tests passed.\n");
