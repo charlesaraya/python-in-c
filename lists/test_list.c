@@ -111,6 +111,36 @@ int main() {
     num = -1;
     assert(count(&list, &num) == 0);
 
+
+    /** 
+     * @name: search_index
+    */
+   // element found
+    int index = search_index(&list, &larger_num, 0, list.length);
+    assert(index == 5);
+    index = search_index(&list, &larger_num, 3, list.length);
+    assert(index == 5);
+    index = search_index(&list, &larger_num, 3, list.length + 10);
+    assert(index == 5);
+    index = search_index(&list, &larger_num, -4, list.length);
+    assert(index == 5);
+    index = search_index(&list, &larger_num, -list.length, -1);
+    assert(index == 5);
+    index = search_index(&list, &larger_num, -list.length-10, -1);
+    assert(index == 5);
+    index = search_index(&list, &larger_num, 3, -1);
+    assert(index == 5);
+    index = search_index(&list, &larger_num, -list.length, list.length);
+    assert(index == 5);
+    // element not found
+    index = search_index(&list, &larger_num, 5, 5);
+    assert(index == -1);
+    index = search_index(&list, &larger_num, 0, 3);
+    assert(index == -1);
+    some_num = -33;
+    index = search_index(&list, &some_num, 0, list.length);
+    assert(index == -1);
+
     free(list.data);
 
     printf("All tests passed.\n");

@@ -16,13 +16,13 @@ A C implementation of Python’s core data structures — built from scratch to 
 - **Minimum**: gets the smallest element in the list. `min(list)` ✅
 - **Maximum**: gets the biggest element in the list. `max(list)` ✅
 - **Pop**: remove an element from the list by index. `list.pop([i])` ✅
+- **Search**: search for an element first found in the list and returns the zero-based index. `list.index(x [, start [, end]])` ✅
 - **Remove**: remove an element from the list by value. `list.remove(x)` ✅
 - **Count**: returns the number of times an element appears in the list. `list.count(x)` ✅
-- **Sort**: sorts the elements of the list in place.
 - **Reverse**: reverses the elements of the list in place.
 - **Copy**: returns a shallow copy of the list.
 - **Extend**: extends the list by appending all the elements from another list.
-- **Search**: searching for an element in the list.
+- **Sort**: sorts the elements of the list in place.
 
 ### Stack (LIFO)
 

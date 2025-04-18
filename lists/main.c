@@ -85,6 +85,29 @@ int main() {
     counts = count(&list, &num_not_in_list);
     printf("list.count(%d): %d\n", num_not_in_list, counts);
 
+    // Index
+    printf("\n===Index===\n");
+    print(&list);
+    some_num = 6;
+    int index = find_index(&list, &some_num, 0, list.length);
+    printf("list.index(%d): %d\n", some_num, index);
+    index = find_index(&list, &some_num, 3, list.length);
+    printf("list.index(%d, %d): %d\n", some_num, 3, index);
+    index = find_index(&list, &some_num, 3, 5);
+    printf("list.index(%d, %d, %d): %d\n", some_num, 3, 5, index);
+    index = find_index(&list, &some_num, 3, 10);
+    printf("list.index(%d, %d, %d): %d\n", some_num, 3, 10, index);
+    index = find_index(&list, &some_num, -4, list.length);
+    printf("list.index(%d, %d): %d\n", some_num, -4, index);
+    index = find_index(&list, &some_num, -4, -1);
+    printf("list.index(%d, %d, %d): %d\n", some_num, -4, -1, index);
+    index = find_index(&list, &some_num, -10, -1);
+    printf("list.index(%d, %d, %d): %d\n", some_num, -10, -1, index);
+    index = find_index(&list, &some_num, 3, -1);
+    printf("list.index(%d, %d, %d): %d\n", some_num, 3, -1, index);
+    index = find_index(&list, &some_num, -4, 5);
+    printf("list.index(%d, %d, %d): %d\n", some_num, -4, 5, index);
+
     free(list.data);
     return 0;
 }

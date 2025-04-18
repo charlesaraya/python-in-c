@@ -46,6 +46,17 @@ void *max(list_t *list);
 
 void *pop(list_t *list, int index);
 
+/** @brief Return zero-based index in the list of the first item whose value is equal to element.
+ *
+ * @param list_t Pointer to the list structure to initialize
+ * @param element Pointer to the element we aim to find
+ * @param start Int used as index to lower limit the search.
+ * @param end Int used as index to upper limit the search.
+ * @return zero-based index of the found element.
+ */
+int search_index(list_t *list, void *element, int start, int end);
+
+
 int delete(list_t *list, void *element);
 
 int count(list_t *list, void *element);

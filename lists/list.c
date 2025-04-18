@@ -199,6 +199,57 @@ void *pop(list_t *list, int index) {
     return popped_element;
 }
 
+int search_index(list_t *list, void *element, int start, int end) {
+    void *list_element = NULL;
+    int index = -1;
+    if (NULL == list || NULL == element) {
+        return -1;
+    }
+    // reset end to the length of the list when out of bounds
+    if (end >= list->length) {
+        end = list->length;
+    }
+    // reset start to the length of the list when out of bounds
+    if (start < -list->length) {
+        start = 0;
+    }
+    // conversion to positive index
+    if (start < 0) {
+        start = list->length + start;
+    }
+    // conversion to positive index
+    if (end < 0) {
+        end = list->length + end;
+    }
+    // start must be lower than end
+    if (start >= end) {
+        return -1;
+    }
+    // Find the index of the first element in the list matching argument
+    for (int i = start; i < end; i++) {
+        list_element = (char *)list->data + list->type_size * i;
+        switch (list->type) {
+            case TYPE_INT:
+                if (*(int *)list_element == *(int *)element) {
+                    index = i;
+                }
+                break;
+            case TYPE_FLOAT:
+                if (*(float *)list_element == *(float *)element) {
+                    index = i;
+                }
+                break;
+            default:
+                break;
+        }
+        // break if an index is found
+        if (-1 != index) {
+            break;
+        }
+    }
+    return index;
+}
+
 int delete(list_t *list, void *element) {
     void *list_element = NULL;
     int index = -1;
