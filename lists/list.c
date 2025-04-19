@@ -59,6 +59,25 @@ void append(list_t *list, void *element) {
     list->length++;
 }
 
+void extend(list_t *dest_list, list_t *src_list) {
+    if (NULL == dest_list || NULL == src_list || dest_list->type != src_list->type) {
+        return;
+    }
+    // Check there's enough capacity on destination  list, otherwise reallocate more memory
+    if (dest_list->length + src_list->length > dest_list->capacity) {
+        dest_list->capacity = dest_list->length + src_list->length;
+        dest_list->data = realloc(dest_list->data, dest_list->capacity * dest_list->type_size);
+        if (NULL == dest_list->data) {
+            return;
+        }
+    }
+    // get target address at dest list_data where the src list->data will be allocaated
+    void *target = (char *)dest_list->data + (dest_list->length * dest_list->type_size);
+    memcpy(target, src_list->data, src_list->length * src_list->type_size);
+    dest_list->length += src_list->length;
+    return;
+}
+
 void print(list_t *list) {
     if (NULL == list) {
         return;

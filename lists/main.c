@@ -3,18 +3,40 @@
 #include "list.h"
 
 int main() {
+    // Init
+    printf("\n===Access===\n");
     list_t list;
     init_list(&list, TYPE_INT, 10);
     print(&list);
     printf("len(list): %d\n", len(&list));
 
+    // Append
+    printf("\n===Append===\n");
     for (int i = 0; i < 10; i++) {
         append(&list, &i);
     }
     print(&list);
     printf("len(list): %d\n", len(&list));
 
+    // Extend
+    printf("\n===Extend===\n");
+    list_t new_list;
+    int aux = 0;
+    init_list(&new_list, TYPE_INT, 10);
+    for (int i = 0; i < 5; i++) {
+        aux = i * i;
+        append(&new_list, &aux);
+    }
+    printf("len(new_list): %d\n", len(&new_list));
+    printf("capacity(new_list): %d\n", new_list.capacity);
+    print(&new_list);
+    extend(&list, &new_list);
+    printf("list.extend(new_list):");
+    print(&list);
+    free(new_list.data);
+
     // Insert
+    printf("\n===Insert===\n");
     int big_num= 100;
     insert(&list, &big_num, 5);
     print(&list);
@@ -89,23 +111,23 @@ int main() {
     printf("\n===Index===\n");
     print(&list);
     some_num = 6;
-    int index = find_index(&list, &some_num, 0, list.length);
+    int index = search_index(&list, &some_num, 0, list.length);
     printf("list.index(%d): %d\n", some_num, index);
-    index = find_index(&list, &some_num, 3, list.length);
+    index = search_index(&list, &some_num, 3, list.length);
     printf("list.index(%d, %d): %d\n", some_num, 3, index);
-    index = find_index(&list, &some_num, 3, 5);
+    index = search_index(&list, &some_num, 3, 5);
     printf("list.index(%d, %d, %d): %d\n", some_num, 3, 5, index);
-    index = find_index(&list, &some_num, 3, 10);
+    index = search_index(&list, &some_num, 3, 10);
     printf("list.index(%d, %d, %d): %d\n", some_num, 3, 10, index);
-    index = find_index(&list, &some_num, -4, list.length);
+    index = search_index(&list, &some_num, -4, list.length);
     printf("list.index(%d, %d): %d\n", some_num, -4, index);
-    index = find_index(&list, &some_num, -4, -1);
+    index = search_index(&list, &some_num, -4, -1);
     printf("list.index(%d, %d, %d): %d\n", some_num, -4, -1, index);
-    index = find_index(&list, &some_num, -10, -1);
+    index = search_index(&list, &some_num, -10, -1);
     printf("list.index(%d, %d, %d): %d\n", some_num, -10, -1, index);
-    index = find_index(&list, &some_num, 3, -1);
+    index = search_index(&list, &some_num, 3, -1);
     printf("list.index(%d, %d, %d): %d\n", some_num, 3, -1, index);
-    index = find_index(&list, &some_num, -4, 5);
+    index = search_index(&list, &some_num, -4, 5);
     printf("list.index(%d, %d, %d): %d\n", some_num, -4, 5, index);
 
     free(list.data);

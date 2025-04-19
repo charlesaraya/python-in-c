@@ -9,6 +9,7 @@ A C implementation of Python’s core data structures — built from scratch to 
 - **Initialization** of int/float type with capacity. `list()` ✅
 - **Length**: get the length of the list. `len(list)` ✅
 - **Append**: add an element to the end of the list. `list.append(x)` ✅
+- **Extend**: extends the list by appending all the elements from another list. `list.extend(x)` ✅
 - **Print**: print the list. `print(list)` ✅
 - **Insert**: set an element in the list by index (from head and tail). `list.insert(i, x)` ✅
 - **Access**: get an element from the list by index (from head and tail). `list[i]` ✅
@@ -21,7 +22,6 @@ A C implementation of Python’s core data structures — built from scratch to 
 - **Count**: returns the number of times an element appears in the list. `list.count(x)` ✅
 - **Reverse**: reverses the elements of the list in place.
 - **Copy**: returns a shallow copy of the list.
-- **Extend**: extends the list by appending all the elements from another list.
 - **Sort**: sorts the elements of the list in place.
 
 ### Stack (LIFO)

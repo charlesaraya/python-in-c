@@ -32,6 +32,13 @@ int len(list_t *list);
 
 void append(list_t *list, void *element);
 
+/** @brief Extends a list by appending all the items from another list.
+ *
+ * @param list_t Pointer to the destination list we aim to extend.
+ * @param list_t Pointer to the source list we aim to extend on destination.
+ */
+void extend(list_t *dest_list, list_t *src_list);
+
 void print(list_t *list);
 
 void insert(list_t *list, void *element, int index);
@@ -60,3 +67,4 @@ int search_index(list_t *list, void *element, int start, int end);
 int delete(list_t *list, void *element);
 
 int count(list_t *list, void *element);
+
