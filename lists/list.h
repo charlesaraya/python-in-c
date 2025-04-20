@@ -32,18 +32,18 @@ error_t init_list(list_t *list, list_type_t type, int capacity);
  */
 int len(list_t *list);
 
-void append(list_t *list, void *element);
+error_t append(list_t *list, void *element);
 
 /** @brief Extends a list by appending all the items from another list.
  *
  * @param list_t Pointer to the destination list we aim to extend.
  * @param list_t Pointer to the source list we aim to extend on destination.
  */
-void extend(list_t *dest_list, list_t *src_list);
+error_t extend(list_t *dest_list, list_t *src_list);
 
-void print(list_t *list);
+error_t print(list_t *list);
 
-void insert(list_t *list, void *element, int index);
+error_t insert(list_t *list, void *element, int index);
 
 void *access(list_t *list, int index);
 
@@ -66,7 +66,7 @@ void *pop(list_t *list, int index);
 int search_index(list_t *list, void *element, int start, int end);
 
 
-int delete(list_t *list, void *element);
+error_t delete(list_t *list, void *element);
 
 int count(list_t *list, void *element);
 
@@ -74,4 +74,4 @@ int count(list_t *list, void *element);
  *
  * @param list_t Pointer to the list structure to reverse
  */
-void reverse(list_t *list);
+error_t reverse(list_t *list);

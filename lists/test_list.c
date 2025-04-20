@@ -94,11 +94,11 @@ int main() {
      * @name: delete
     */
     length = list.length;
-    assert(delete(&list, &small_num) == 1);
+    assert(delete(&list, &small_num) == ERR_OK);
     assert(list.length == length - 1);
 
     int some_num = -11;
-    assert(delete(&list, &some_num) == 0);
+    assert(delete(&list, &some_num) != ERR_OK);
     assert(list.length == length - 1);
 
     /** 

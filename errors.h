@@ -8,6 +8,7 @@ typedef enum ErrorType {
     ERR_TYPE_MISMATCH,           // Types did not match
     ERR_INDEX_OUT_OF_BOUNDS,     // Accessed invalid index
     ERR_INVALID_ARGUMENT,        // Invalid argument
+    ERR_NOT_FOUND,                // Element not found
 } error_t;
 
 #endif

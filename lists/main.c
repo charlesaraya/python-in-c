@@ -88,8 +88,8 @@ int main() {
     int result = delete(&list, &some_num);
     printf("list.remove(%d): %d\n", some_num, result);
     some_num = -999;
+    printf("list.remove(%d):\n", some_num);
     result = delete(&list, &some_num);
-    printf("list.remove(%d): %d\n", some_num, result);
     print(&list);
 
     // Count
