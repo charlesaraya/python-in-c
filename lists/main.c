@@ -130,6 +130,12 @@ int main() {
     index = search_index(&list, &some_num, -4, 5);
     printf("list.index(%d, %d, %d): %d\n", some_num, -4, 5, index);
 
+    // Reverse
+    printf("\n===Reverse===\n");
+    print(&list);
+    reverse(&list);
+    print(&list);
+
     free(list.data);
     return 0;
 }

@@ -68,3 +68,8 @@ int delete(list_t *list, void *element);
 
 int count(list_t *list, void *element);
 
+/** @brief Reverse the order of a list.
+ *
+ * @param list_t Pointer to the list structure to reverse
+ */
+void reverse(list_t *list);

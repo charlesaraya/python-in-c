@@ -339,3 +339,25 @@ int count(list_t *list, void *element) {
     }
     return count;
 }
+
+void reverse(list_t *list) {
+    if (NULL == list || list->length < 2) {
+        return;
+    }
+    void *head = NULL;
+    void *tail = NULL;
+    // Allocate a temp buffer for generic type swap.
+    void *temp = malloc(list->type_size);
+    if (NULL == temp) {
+        return;
+    }
+    for (int i = 0; i < list->length / 2; i++) {
+        head = list->data + list->type_size * i;
+        tail = list->data + list->type_size * (list->length - 1 - i);
+        memcpy(temp, head, list->type_size);
+        memcpy(head, tail, list->type_size);
+        memcpy(tail, temp, list->type_size);
+    }
+    free(temp);
+    return;
+}

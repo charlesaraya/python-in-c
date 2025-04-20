@@ -20,7 +20,7 @@ A C implementation of Python’s core data structures — built from scratch to 
 - **Search**: search for an element first found in the list and returns the zero-based index. `list.index(x [, start [, end]])` ✅
 - **Remove**: remove an element from the list by value. `list.remove(x)` ✅
 - **Count**: returns the number of times an element appears in the list. `list.count(x)` ✅
-- **Reverse**: reverses the elements of the list in place.
+- **Reverse**: reverses the elements of the list in-place. `list.reverse()` ✅
 - **Copy**: returns a shallow copy of the list.
 - **Sort**: sorts the elements of the list in place.
 
