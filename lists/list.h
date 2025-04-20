@@ -1,3 +1,5 @@
+#include "../errors.h"
+
 typedef enum ListType {
     TYPE_INT,
     TYPE_FLOAT,
@@ -20,7 +22,7 @@ typedef struct List {
  * @param capacity Initial number of elements to allocate
  * @param element_size Size of a single element (in bytes)
  */
-void init_list(list_t *list, list_type_t type, int capacity);
+error_t init_list(list_t *list, list_type_t type, int capacity);
 
 
 /** @brief Returns the length of the list

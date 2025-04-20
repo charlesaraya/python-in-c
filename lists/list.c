@@ -5,10 +5,12 @@
 
 void init_list(list_t *list, list_type_t type, int capacity) {
     if (NULL == list) {
-        return;
+        fprintf(stderr, "Error: NULL list_t pointer passed to init_list()\n");
+        return ERR_NULL_POINTER;
     }
     if (capacity <= 0) {
-        return;
+        fprintf(stderr, "Error: Negative list_t capacity passed to init_list()\n");
+        return ERR_INVALID_ARGUMENT;
     }
     switch (type) {
         case TYPE_INT:
@@ -21,18 +23,20 @@ void init_list(list_t *list, list_type_t type, int capacity) {
             list->type_size = sizeof(void);
             break;
         default:
-            return;
+            fprintf(stderr, "Error: Unknown list_t type passed to init_list()\n");
+            return ERR_INVALID_ARGUMENT;
     }
 
     void *data = (void *)malloc(capacity * list->type_size);
     if (NULL == data) {
-        return;
+        fprintf(stderr, "Error: Data allocation failed in init_list()\n");
+        return ERR_OUT_OF_MEMORY;
     }
     list->data = data;
     list->capacity = capacity;
     list->length = 0;
     list->type = type;
-    return;
+    return ERR_OK;
 }
 
 int len(list_t *list) {
@@ -340,9 +344,9 @@ int count(list_t *list, void *element) {
     return count;
 }
 
-void reverse(list_t *list) {
+int reverse(list_t *list) {
     if (NULL == list || list->length < 2) {
-        return;
+        return -1;
     }
     void *head = NULL;
     void *tail = NULL;
