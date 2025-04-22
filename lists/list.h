@@ -47,6 +47,8 @@ error_t insert(list_t *list, void *element, int index);
 
 void *access(list_t *list, int index);
 
+void *slice(list_t *list, int start, int end, int step);
+
 int in(list_t *list, void *element);
 
 void *min(list_t *list);

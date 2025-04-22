@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <math.h>
 #include "list.h"
 
 error_t init_list(list_t *list, list_type_t type, int capacity) {
@@ -146,6 +147,53 @@ void *access(list_t *list, int index) {
         void *target = list->data + ((list->length + index) * list->type_size);
         return target;
     }
+}
+
+void *slice(list_t *list, int start, int end, int step) {
+    if (NULL == list) {
+        fprintf(stderr, "Error: NULL pointer passed to access()\n");
+        return NULL;
+    }
+    // start must be lower than end
+    if (step == 0) {
+        fprintf(stderr, "Error: Slice step cannot be zero slice()\n");
+        return NULL;
+    }
+    // reset end to the length of the list when out of bounds
+    if (end >= list->length) {
+        end = list->length;
+    }
+    // reset start to the length of the list when out of bounds
+    if (start < -list->length) {
+        start = 0;
+    }
+    // conversion to positive index
+    if (start < 0) {
+        start = list->length + start;
+    }
+    // conversion to positive index
+    if (end < 0) {
+        end = list->length + end;
+    }
+    // Init a slice list
+    int abs_step = step < 0 ? -step : step;
+    int slice_size = (end - start + abs_step - 1) / abs_step;
+    list_t slice_list;
+    init_list(&slice_list, list->type, slice_size);
+    slice_list.length = slice_size;
+    void *dest;
+    void *src;
+    for (int i = 0; i < slice_size; i++) {
+        dest = (char *)slice_list.data + slice_list.type_size * i;
+        if (step > 0) {
+            src = (char *)list->data + list->type_size * (start * step);
+        } else {
+            src = (char *)list->data + list->type_size * (list->length - 1 + (i * step));
+        }
+        memcpy(dest, src, slice_list.type_size);
+    }
+    void *sliced_list = &slice_list;
+    return sliced_list;
 }
 
 int in(list_t *list, void *element) {

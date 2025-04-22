@@ -52,6 +52,28 @@ int main() {
     num = (int *)access(&list, -1);
     printf("list[%d]: %d\n", -1, *num);
 
+    // Slice
+    printf("\n===Slice===\n");
+    list_t slice_list;
+    slice_list = *(list_t *)slice(&list, 0, 6, 1);
+    printf("list[:6]: ");
+    print(&slice_list);
+    free(slice_list.data);
+
+    slice_list = *(list_t *)slice(&list, 0, list.length, 2);
+    printf("list[::2]: ");
+    print(&slice_list);
+    free(slice_list.data);
+
+    slice_list = *(list_t *)slice(&list, 0, list.length, -1);
+    printf("list[::-1]: ");
+    print(&slice_list);
+    free(slice_list.data);
+
+    slice_list = *(list_t *)slice(&list, 0, list.length, -2);
+    printf("list[::-2]: ");
+    print(&slice_list);
+
     // In
     printf("\n===In===\n");
     print(&list);

@@ -13,6 +13,7 @@ A C implementation of Python’s core data structures — built from scratch to 
 - **Print**: print the list. `print(list)` ✅
 - **Insert**: set an element in the list by index (from head and tail). `list.insert(i, x)` ✅
 - **Access**: get an element from the list by index (from head and tail). `list[i]` ✅
+- **Slice**: get a slice of elements from the list. `list[i:j:k]` ✅
 - **Membership**: check an element's membership in the list. `x in list` ✅
 - **Minimum**: gets the smallest element in the list. `min(list)` ✅
 - **Maximum**: gets the biggest element in the list. `max(list)` ✅
