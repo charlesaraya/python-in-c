@@ -4,13 +4,13 @@
 #include <math.h>
 #include "list.h"
 
-error_t init_list(list_t *list, list_type_t type, int capacity) {
+error_t init_list(pylist_t *list, list_type_t type, int capacity) {
     if (NULL == list) {
-        fprintf(stderr, "Error: NULL list_t pointer passed to init_list()\n");
+        fprintf(stderr, "Error: NULL pylist_t pointer passed to init_list()\n");
         return ERR_NULL_POINTER;
     }
     if (capacity <= 0) {
-        fprintf(stderr, "Error: Negative list_t capacity passed to init_list()\n");
+        fprintf(stderr, "Error: Negative pylist_t capacity passed to init_list()\n");
         return ERR_INVALID_ARGUMENT;
     }
     switch (type) {
@@ -24,7 +24,7 @@ error_t init_list(list_t *list, list_type_t type, int capacity) {
             list->type_size = sizeof(void);
             break;
         default:
-            fprintf(stderr, "Error: Unknown list_t type passed to init_list()\n");
+            fprintf(stderr, "Error: Unknown pylist_t type passed to init_list()\n");
             return ERR_INVALID_ARGUMENT;
     }
 
@@ -40,15 +40,15 @@ error_t init_list(list_t *list, list_type_t type, int capacity) {
     return ERR_OK;
 }
 
-int len(list_t *list) {
+int len(pylist_t *list) {
     if (NULL == list) {
-        fprintf(stderr, "Error: NULL list_t pointer passed to len()\n");
+        fprintf(stderr, "Error: NULL pylist_t pointer passed to len()\n");
         return ERR_NULL_POINTER;
     }
     return list->length;
 }
 
-error_t append(list_t *list, void *element) {
+error_t append(pylist_t *list, void *element) {
     if (NULL == list || NULL == element) {
         fprintf(stderr, "Error: NULL pointer passed to append()\n");
         return ERR_NULL_POINTER;
@@ -68,13 +68,13 @@ error_t append(list_t *list, void *element) {
     return ERR_OK;
 }
 
-error_t extend(list_t *dest_list, list_t *src_list) {
+error_t extend(pylist_t *dest_list, pylist_t *src_list) {
     if (NULL == dest_list || NULL == src_list) {
         fprintf(stderr, "Error: NULL pointer passed to extend()\n");
         return ERR_NULL_POINTER;
     }
     if (dest_list->type != src_list->type) {
-        fprintf(stderr, "Error: Wrong mismatch in list_t types passed to extend()\n");
+        fprintf(stderr, "Error: Wrong mismatch in pylist_t types passed to extend()\n");
         return ERR_TYPE_MISMATCH;
     }
     // Check there's enough capacity on destination  list, otherwise reallocate more memory
@@ -94,7 +94,7 @@ error_t extend(list_t *dest_list, list_t *src_list) {
     return ERR_OK;
 }
 
-error_t print(list_t *list) {
+error_t print(pylist_t *list) {
     if (NULL == list) {
         fprintf(stderr, "Error: NULL pointer passed to print()\n");
         return ERR_NULL_POINTER;
@@ -114,7 +114,7 @@ error_t print(list_t *list) {
     return ERR_OK;
 }
 
-error_t insert(list_t *list, void *element, int index) {
+error_t insert(pylist_t *list, void *element, int index) {
     if (NULL == list || NULL == element) {
         fprintf(stderr, "Error: NULL pointer passed to insert()\n");
         return ERR_NULL_POINTER;
@@ -132,7 +132,7 @@ error_t insert(list_t *list, void *element, int index) {
     return ERR_OK;
 }
 
-void *access(list_t *list, int index) {
+void *access(pylist_t *list, int index) {
     if (NULL == list) {
         fprintf(stderr, "Error: NULL pointer passed to access()\n");
         return NULL;
@@ -150,7 +150,7 @@ void *access(list_t *list, int index) {
     }
 }
 
-void *slice(list_t *list, int start, int end, int step) {
+void *slice(pylist_t *list, int start, int end, int step) {
     if (NULL == list) {
         fprintf(stderr, "Error: NULL pointer passed to access()\n");
         return NULL;
@@ -179,7 +179,7 @@ void *slice(list_t *list, int start, int end, int step) {
     // Init a slice list
     int abs_step = step < 0 ? -step : step;
     int slice_size = (end - start + abs_step - 1) / abs_step;
-    list_t slice_list;
+    pylist_t slice_list;
     init_list(&slice_list, list->type, slice_size);
     slice_list.length = slice_size;
     void *dest;
@@ -197,7 +197,7 @@ void *slice(list_t *list, int start, int end, int step) {
     return sliced_list;
 }
 
-int in(list_t *list, void *element) {
+int in(pylist_t *list, void *element) {
     if (NULL == list || NULL == element) {
         fprintf(stderr, "Error: NULL pointer passed to in()\n");
         return ERR_NULL_POINTER;
@@ -215,14 +215,14 @@ int in(list_t *list, void *element) {
                 }
                 break;
             default:
-                fprintf(stderr, "Error: Unknown list_t type passed to in()\n");
+                fprintf(stderr, "Error: Unknown pylist_t type passed to in()\n");
                 return ERR_INVALID_ARGUMENT;
         }
     }
     return 0;
 }
 
-void *min(list_t *list) {
+void *min(pylist_t *list) {
     if (NULL == list) {
         fprintf(stderr, "Error: NULL pointer passed to min()\n");
         return NULL;
@@ -245,14 +245,14 @@ void *min(list_t *list) {
                 }
                 break;
             default:
-                fprintf(stderr, "Error: Unknown list_t type passed to min()\n");
+                fprintf(stderr, "Error: Unknown pylist_t type passed to min()\n");
                 return NULL;
         }
     }
     return current_min;
 }
 
-void *max(list_t *list) {
+void *max(pylist_t *list) {
     if (NULL == list) {
         fprintf(stderr, "Error: NULL pointer passed to max()\n");
         return NULL;
@@ -275,14 +275,14 @@ void *max(list_t *list) {
                 }
                 break;
             default:
-                fprintf(stderr, "Error: Unknown list_t type passed to max()\n");
+                fprintf(stderr, "Error: Unknown pylist_t type passed to max()\n");
                 return NULL;
         }
     }
     return current_max;
 }
 
-void *pop(list_t *list, int index) {
+void *pop(pylist_t *list, int index) {
     if (NULL == list) {
         fprintf(stderr, "Error: NULL pointer passed to pop()\n");
         return NULL;
@@ -313,7 +313,7 @@ void *pop(list_t *list, int index) {
     return popped_element;
 }
 
-int search_index(list_t *list, void *element, int start, int end) {
+int search_index(pylist_t *list, void *element, int start, int end) {
     if (NULL == list || NULL == element) {
         fprintf(stderr, "Error: NULL pointer passed to search_index()\n");
         return ERR_NULL_POINTER;
@@ -355,7 +355,7 @@ int search_index(list_t *list, void *element, int start, int end) {
                 }
                 break;
             default:
-                fprintf(stderr, "Error: Unknown list_t type passed to search_index()\n");
+                fprintf(stderr, "Error: Unknown pylist_t type passed to search_index()\n");
                 return ERR_INVALID_ARGUMENT;
         }
         // break if an index is found
@@ -366,7 +366,7 @@ int search_index(list_t *list, void *element, int start, int end) {
     return index;
 }
 
-error_t delete(list_t *list, void *element) {
+error_t delete(pylist_t *list, void *element) {
     if (NULL == list || NULL == element) {
         fprintf(stderr, "Error: NULL pointer passed to delete()\n");
         return ERR_NULL_POINTER;
@@ -388,7 +388,7 @@ error_t delete(list_t *list, void *element) {
                 }
                 break;
             default:
-                fprintf(stderr, "Error: Unknown list_t type passed to delete()\n");
+                fprintf(stderr, "Error: Unknown pylist_t type passed to delete()\n");
                 return ERR_INVALID_ARGUMENT;
                 break;
         }
@@ -413,7 +413,7 @@ error_t delete(list_t *list, void *element) {
     return ERR_OK;
 }
 
-int count(list_t *list, void *element) {
+int count(pylist_t *list, void *element) {
     if (NULL == list || NULL == element) {
         fprintf(stderr, "Error: NULL pointer passed to count()\n");
         return ERR_NULL_POINTER;
@@ -434,14 +434,14 @@ int count(list_t *list, void *element) {
                 }
                 break;
             default:
-                fprintf(stderr, "Error: Unknown list_t type passed to count()\n");
+                fprintf(stderr, "Error: Unknown pylist_t type passed to count()\n");
                 return ERR_INVALID_ARGUMENT;
         }
     }
     return count;
 }
 
-error_t reverse(list_t *list) {
+error_t reverse(pylist_t *list) {
     if (NULL == list) {
         fprintf(stderr, "Error: NULL pointer passed to reverse()\n");
         return ERR_NULL_POINTER;

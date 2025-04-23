@@ -7,7 +7,7 @@ int main() {
     /** 
      * @name: init_list
     */
-    list_t list;
+    pylist_t list;
     const int INITIAL_CAPACITY = 10;
     printf("Test init list...\n");
     init_list(&list, TYPE_INT, INITIAL_CAPACITY);
@@ -41,7 +41,7 @@ int main() {
     assert(in(&list, &in_list) == 1);
     assert(in(&list, &not_in_list) == 0);
 
-    list_t float_list;
+    pylist_t float_list;
     init_list(&float_list, TYPE_FLOAT, INITIAL_CAPACITY);
     float pi = 3.14;
     float e = 2.71;
@@ -57,7 +57,7 @@ int main() {
     insert(&list, &small_num, 5);
     assert(small_num == *((int *)min(&list)));
 
-    list_t empty_list;
+    pylist_t empty_list;
     init_list(&empty_list, TYPE_FLOAT, 10);
     assert(min(&empty_list) == NULL);
     free(empty_list.data);

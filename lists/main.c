@@ -4,8 +4,8 @@
 
 int main() {
     // Init
-    printf("\n===Access===\n");
-    list_t list;
+    printf("\n===Init===\n");
+    pylist_t list;
     init_list(&list, TYPE_INT, 10);
     print(&list);
     printf("len(list): %d\n", len(&list));
@@ -20,7 +20,7 @@ int main() {
 
     // Extend
     printf("\n===Extend===\n");
-    list_t new_list;
+    pylist_t new_list;
     int aux = 0;
     init_list(&new_list, TYPE_INT, 10);
     for (int i = 0; i < 5; i++) {
@@ -54,23 +54,23 @@ int main() {
 
     // Slice
     printf("\n===Slice===\n");
-    list_t slice_list;
-    slice_list = *(list_t *)slice(&list, 0, 6, 1);
+    pylist_t slice_list;
+    slice_list = *(pylist_t *)slice(&list, 0, 6, 1);
     printf("list[:6]: ");
     print(&slice_list);
     free(slice_list.data);
 
-    slice_list = *(list_t *)slice(&list, 0, list.length, 2);
+    slice_list = *(pylist_t *)slice(&list, 0, list.length, 2);
     printf("list[::2]: ");
     print(&slice_list);
     free(slice_list.data);
 
-    slice_list = *(list_t *)slice(&list, 0, list.length, -1);
+    slice_list = *(pylist_t *)slice(&list, 0, list.length, -1);
     printf("list[::-1]: ");
     print(&slice_list);
     free(slice_list.data);
 
-    slice_list = *(list_t *)slice(&list, 0, list.length, -2);
+    slice_list = *(pylist_t *)slice(&list, 0, list.length, -2);
     printf("list[::-2]: ");
     print(&slice_list);
 
