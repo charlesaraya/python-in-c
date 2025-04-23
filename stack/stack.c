@@ -36,3 +36,27 @@ error_t init_stack(pystack_t *stack, stack_type_t type, int capacity) {
     stack->data = data;
     return ERR_OK;
 }
+
+
+error_t push(pystack_t *stack, void *element) {
+    if (NULL == stack) {
+        fprintf(stderr, "Error: NULL pystack_t pointer passed to push()");
+        return ERR_NULL_POINTER;
+    }
+    if (NULL == element) {
+        fprintf(stderr, "Error: NULL element pointer passed to push()");
+        return ERR_NULL_POINTER;
+    }
+    if (stack->top == stack->capacity) {
+        stack->capacity *= 2;
+        stack->data = realloc(stack->data, stack->capacity);
+        if (NULL == stack->data) {
+            fprintf(stderr, "Error: Reallocation failed in push()");
+            return ERR_OUT_OF_MEMORY;
+        }
+    }
+    void *target = (char *)stack->data + stack->top * stack->type_size;
+    memcpy(target, element, stack->type_size);
+    stack->top++;
+    return ERR_OK;
+}
