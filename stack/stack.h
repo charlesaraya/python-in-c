@@ -14,7 +14,6 @@ typedef enum StackType {
  */
 typedef struct Stack {
     int capacity;       // Total allocated capacity
-    int length;         // Total number of elements in the stack
     int top;            // Index where the next push goes.
     stack_type_t type;  // Type of list elements
     int type_size;      // Size in bytes of each element
@@ -24,7 +23,7 @@ typedef struct Stack {
 
 /** @brief Initializes a dynamic stack with given type, and capacity.
  *
- * @param list_t Pointer to the array structure to initialize
+ * @param pystack_t Pointer to the stack structure to initialize
  * @param capacity Initial number of elements to allocate
  * @param element_size Size of a single element (in bytes)
  */

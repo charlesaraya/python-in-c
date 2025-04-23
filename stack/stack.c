@@ -1,10 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "stack.h"
 
 error_t init_stack(pystack_t *stack, stack_type_t type, int capacity) {
     if (NULL == stack) {
-        fprintf(stderr, "Error: NULL stack_t pointer passed to init_stack()\n");
+        fprintf(stderr, "Error: NULL pystack_t pointer passed to init_stack()\n");
         return ERR_NULL_POINTER;
     }
     if (capacity <= 0) {
@@ -20,7 +21,7 @@ error_t init_stack(pystack_t *stack, stack_type_t type, int capacity) {
             stack->type_size = sizeof(float);
             break;
         default:
-            fprintf(stderr, "Error: Unknown stack_t type passed to init_stack()\n");
+            fprintf(stderr, "Error: Unknown pystack_t type passed to init_stack()\n");
             return ERR_INVALID_ARGUMENT;
     }
 
@@ -30,7 +31,6 @@ error_t init_stack(pystack_t *stack, stack_type_t type, int capacity) {
         return ERR_OUT_OF_MEMORY;
     }
     stack->capacity = capacity;
-    stack->length = 0;
     stack->top = 0;
     stack->type = type;
     stack->data = data;
