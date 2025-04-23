@@ -1,5 +1,6 @@
 *.dSYM
 app
 test_list
+test_stack
 Makefile
 .vscode
