@@ -60,3 +60,19 @@ error_t push(pystack_t *stack, void *element) {
     stack->top++;
     return ERR_OK;
 }
+
+void *pop(pystack_t *stack) {
+    if (NULL == stack) {
+        fprintf(stderr, "Error: NULL pystack_t pointer passed to pop()");
+        return NULL;
+    }
+    if (0 == stack->top) {
+        fprintf(stderr, "Nothing to pop from the stack\n");
+        return NULL;
+    }
+    void *element = malloc(stack->type_size);
+    void *target = (char *)stack->data + (stack->top - 1) * stack->type_size;
+    memcpy(element, target, stack->type_size);
+    stack->top--;
+    return element;
+}

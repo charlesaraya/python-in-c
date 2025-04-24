@@ -17,6 +17,15 @@ int main() {
     printf("\nCapacity: %d\n", stack.capacity);
     printf("Top: %d\n", stack.top);
 
+    printf("\n===Pop===\n");
+    void *p;
+    for (int i = 0; i < 4; i++) {
+        p = pop(&stack);
+        printf("Pop: %d ", *(int *)p);
+    }
+    printf("\nCapacity: %d\n", stack.capacity);
+    printf("Top: %d\n", stack.top);
+
     free(stack.data);
     return 0;
 }

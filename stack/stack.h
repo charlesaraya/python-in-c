@@ -36,3 +36,9 @@ error_t init_stack(pystack_t *stack, stack_type_t type, int capacity);
  * @param element Pointer to the element to be pushed into the stack
  */
 error_t push(pystack_t *stack, void *element);
+
+/** @brief Pop an element from the stack.
+ *
+ * @param pystack_t Pointer to the stack to pop from
+ */
+void *pop(pystack_t *stack);
