@@ -30,10 +30,9 @@ typedef struct Stack {
 error_t init_stack(pystack_t *stack, stack_type_t type, int capacity);
 
 
-/** @brief Push an element in the stack.
+/** @brief Push an element into the stack.
  *
  * @param pystack_t Pointer to the stack structure to initialize
- * @param capacity Initial number of elements to allocate
- * @param element_size Size of a single element (in bytes)
+ * @param element Pointer to the element to be pushed into the stack
  */
 error_t push(pystack_t *stack, void *element);
