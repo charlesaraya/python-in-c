@@ -50,7 +50,7 @@ int main() {
     init_stack(&empty_stack, TYPE_INT, 1);
     p = pop(&empty_stack);
     assert(NULL == p);
-
+    free(p);
     printf("[PASSED]\n");
 
     free(stack.data);

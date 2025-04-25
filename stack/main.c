@@ -25,6 +25,7 @@ int main() {
     }
     printf("\nCapacity: %d\n", stack.capacity);
     printf("Top: %d\n", stack.top);
+    free(p);
 
     free(stack.data);
     return 0;
