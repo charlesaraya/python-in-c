@@ -27,11 +27,9 @@ A C implementation of Python’s core data structures — built from scratch to 
 
 ### Stack (LIFO)
 
-- Push
-- Pop
-- Peek/top
-- Is empty
-- Size
+- **Pop**: Removes and returns the top element from the stack. Shrinks the stack size. `stack.pop(x)` ✅
+- **Push**: Adds an element to the top of the stack. Expands the stack if necessary. `stack.push(x)` ✅
+- **Peek**: Returns the top element without removing it, allowing inspection of the current top value. `stack.peek()` ✅
 
 ### Queue (FIFO)
 
