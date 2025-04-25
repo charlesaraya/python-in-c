@@ -27,6 +27,12 @@ int main() {
     printf("Top: %d\n", stack.top);
     free(p);
 
+    printf("\n===Peek===\n");
+    p = peek(&stack);
+    printf("Peek: %d\n", *(int *)p);
+    printf("Top: %d\n", stack.top);
+    free(p);
+
     free(stack.data);
     return 0;
 }

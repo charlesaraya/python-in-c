@@ -42,3 +42,9 @@ error_t push(pystack_t *stack, void *element);
  * @param pystack_t Pointer to the stack to pop from
  */
 void *pop(pystack_t *stack);
+
+/** @brief Peek returns the top element without removing it
+ *
+ * @param pystack_t Pointer to the stack to peef from
+ */
+void *peek(pystack_t *stack);

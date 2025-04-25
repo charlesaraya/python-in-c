@@ -76,3 +76,18 @@ void *pop(pystack_t *stack) {
     stack->top--;
     return element;
 }
+
+void *peek(pystack_t *stack) {
+    if (NULL == stack) {
+        fprintf(stderr, "Error: NULL pystack_t pointer passed to peek()");
+        return NULL;
+    }
+    if ( 0 == stack->top) {
+        fprintf(stderr, "Nothing to peek from the stack\n");
+        return NULL;
+    }
+    void *element = malloc(stack->type_size);
+    void *target = (char *)stack->data + (stack->top - 1) * stack->type_size;
+    memcpy(element, target, stack->type_size);
+    return element;
+}

@@ -53,6 +53,20 @@ int main() {
     free(p);
     printf("[PASSED]\n");
 
+    /** 
+     * @name: peek
+    */
+    printf("Test Peek... ");
+    p = peek(&stack);
+    assert(TOTAL_PUSHED - TOTAL_POPPED - 1 == *(int *)p);
+
+    // Peer an empty stack
+    p = peek(&empty_stack);
+    assert(NULL == p);
+    free(p);
+    free(empty_stack.data);
+    printf("[PASSED]\n");
+
     free(stack.data);
 
     printf("All tests passed.\n");
